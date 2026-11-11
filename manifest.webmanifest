@@ -1,7 +1,7 @@
 {
-  "name": "省算 · 淘宝美团到手价比价",
+  "name": "省算 · 淘宝京东拼多多比价",
   "short_name": "省算",
-  "description": "淘宝/天猫与美团双平台到手价比价，自动计算满减、店铺券、折扣、红包和运费券的最优叠加顺序。纯本地计算，不上传数据。",
+  "description": "输入商品名，同时搜索淘宝/天猫、京东、拼多多，汇总相关商品和券后参考价，自动标出哪个平台更低。",
   "id": "./",
   "lang": "zh-CN",
   "dir": "ltr",
@@ -13,7 +13,7 @@
   "prefer_related_applications": false,
   "background_color": "#f3efe5",
   "theme_color": "#0b3b2a",
-  "categories": ["shopping", "utilities", "finance"],
+  "categories": ["shopping", "utilities"],
   "icons": [
     {
       "src": "icon.svg",
@@ -48,10 +48,10 @@
   ],
   "shortcuts": [
     {
-      "name": "粘贴商品口令",
-      "short_name": "粘贴比价",
-      "description": "从淘宝或美团复制口令，快速填入购物车",
-      "url": "./index.html?paste=1",
+      "name": "搜索商品比价",
+      "short_name": "搜比价",
+      "description": "打开搜索页，输入商品名查三平台价格",
+      "url": "./index.html",
       "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
     }
   ]

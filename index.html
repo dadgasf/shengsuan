@@ -5,121 +5,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0d3d2b">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="省算：淘宝/天猫与美团双平台到手价比价，自动计算满减、店铺券、折扣、红包和运费券的最优叠加顺序。纯本地计算，不上传数据。">
-  <!-- iOS 27 / Safari：主屏幕独立窗口、状态栏和图标 -->
+  <meta name="description" content="省算：输入商品名，同时搜索淘宝/天猫、京东、拼多多，汇总相关商品和券后参考价，自动标出哪个平台更低。">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="省算">
   <meta name="format-detection" content="telephone=no">
-  <title>省算 · 淘宝美团到手价比价</title>
+  <title>省算 · 淘宝京东拼多多比价</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="search.css">
 </head>
 <body>
   <div class="app-shell" id="app">
     <header class="topbar">
-      <a class="brand" href="#top" aria-label="省算首页">
+      <a class="brand" href="./" aria-label="省算首页">
         <span class="brand-mark" aria-hidden="true">省</span>
         <span class="brand-copy">
           <strong>省算</strong>
-          <small>到手价计算器</small>
+          <small>三平台比价</small>
         </span>
       </a>
       <div class="topbar-actions">
-        <button class="icon-btn" type="button" data-action="open-paste" aria-label="粘贴商品口令">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4.5h6M9 3h6a1.5 1.5 0 0 1 1.5 1.5v1H16a2 2 0 0 0-2 2h-4a2 2 0 0 0-2-2H7.5v-1A1.5 1.5 0 0 1 9 3Z"/><path d="M7.5 6.5H6A1.5 1.5 0 0 0 4.5 8v11A1.5 1.5 0 0 0 6 20.5h12a1.5 1.5 0 0 0 1.5-1.5V8A1.5 1.5 0 0 0 18 6.5h-1.5"/><path d="M8.5 12h7M8.5 15.5h4.5"/></svg>
-        </button>
-        <button class="icon-btn" type="button" data-action="open-settings" aria-label="设置与数据">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M19.2 13.4a7.8 7.8 0 0 0 0-2.8l2-1.5-2-3.4-2.4 1a8.2 8.2 0 0 0-2.4-1.4L14.1 2h-4.2l-.3 3.3A8.2 8.2 0 0 0 7.2 6.7l-2.4-1-2 3.4 2 1.5a7.8 7.8 0 0 0 0 2.8l-2 1.5 2 3.4 2.4-1a8.2 8.2 0 0 0 2.4 1.4l.3 3.3h4.2l.3-3.3a8.2 8.2 0 0 0 2.4-1.4l2.4 1 2-3.4-2-1.5Z"/></svg>
+        <button class="icon-btn" type="button" data-action="open-about" aria-label="关于省算与数据来源">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
         </button>
       </div>
     </header>
 
-    <main id="top">
-      <section class="hero" id="hero" aria-labelledby="hero-title">
-        <div class="hero-orbit" aria-hidden="true"></div>
+    <main>
+      <section class="hero search-hero" aria-labelledby="search-title">
         <div class="hero-head">
-          <span class="eyebrow"><span class="eyebrow-dot"></span>本单结论</span>
+          <span class="eyebrow"><span class="eyebrow-dot"></span>淘宝 · 京东 · 拼多多</span>
           <span class="privacy-badge">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.4 2.9 8.4 7 9.5 4.1-1.1 7-5.1 7-9.5V6l-7-3Z"/><path d="m9.3 12.2 1.8 1.8 3.6-4"/></svg>
-            本地计算
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M12 4v16"/><circle cx="12" cy="12" r="8"/></svg>
+            实时搜索
           </span>
         </div>
-        <h1 id="hero-title">这单，在哪买更便宜？</h1>
-        <p class="hero-sub" id="hero-sub">把两个平台的商品和券填进来，自动算清每一分钱。</p>
+        <h1 id="search-title">搜一件商品，<br>比三个平台。</h1>
+        <p class="hero-sub">输入商品名，自动汇总淘宝/天猫、京东、拼多多的相关商品和券后参考价。</p>
 
-        <div class="hero-compare" id="hero-compare" aria-live="polite"></div>
-
-        <div class="hero-actions">
-          <button class="btn btn-lime" type="button" data-action="open-paste">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12h8M12 8v8"/><rect x="4" y="4" width="16" height="16" rx="4"/></svg>
-            粘贴商品口令
+        <form class="search-form" id="search-form" role="search">
+          <label class="sr-only" for="search-input">商品名称</label>
+          <input
+            class="search-input"
+            id="search-input"
+            name="q"
+            type="search"
+            inputmode="search"
+            autocomplete="off"
+            enterkeyhint="search"
+            maxlength="60"
+            placeholder="例如：iPhone 17 256G、机械键盘"
+          >
+          <button class="btn btn-lime search-submit" type="submit">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+            搜比价
           </button>
-          <button class="btn btn-ghost-light" type="button" data-action="load-demo">载入示例</button>
+        </form>
+
+        <div class="example-row" aria-label="示例搜索">
+          <span>试试</span>
+          <button type="button" data-example="iPhone 17 256G">iPhone 17 256G</button>
+          <button type="button" data-example="机械键盘">机械键盘</button>
+          <button type="button" data-example="洗衣液">洗衣液</button>
         </div>
+
+        <div class="search-note" id="search-note">输入商品名开始。搜索的是公开索引价格，不是登录后的专属价。</div>
       </section>
 
-      <div class="section-head">
+      <section id="summary" class="summary" hidden aria-live="polite"></section>
+      <section id="controls" class="controls" hidden aria-label="筛选和排序"></section>
+      <section id="results" class="results" aria-live="polite"></section>
+
+      <section class="source-note">
+        <div class="source-note-icon">i</div>
         <div>
-          <h2>平台购物车</h2>
-          <p>同款商品放两边，优惠按实际规则填写。</p>
+          <strong>关于价格和链接</strong>
+          <p>搜索来自第三方公开比价索引，不是平台官方接口，价格可能延迟或混入不同 SKU。商品链接可能含推广参数；下单前请以商品页和结算页为准。</p>
         </div>
-        <span class="auto-pill"><span></span>自动计算</span>
-      </div>
-
-      <div class="carts" id="carts">
-        <section class="cart-card" id="cart-taobao" data-platform="taobao" aria-label="淘宝购物车"></section>
-        <section class="cart-card" id="cart-meituan" data-platform="meituan" aria-label="美团购物车"></section>
-      </div>
-
-      <section class="how-card" aria-labelledby="how-title">
-        <div class="how-head">
-          <span class="how-kicker">怎么用</span>
-          <h2 id="how-title">三步，算清到手价</h2>
-        </div>
-        <ol class="how-list">
-          <li>
-            <span class="how-num">01</span>
-            <div><strong>放商品</strong><p>粘贴淘宝/美团口令，或手动填价格和数量。</p></div>
-          </li>
-          <li>
-            <span class="how-num">02</span>
-            <div><strong>加优惠</strong><p>满减、店铺券、折扣、红包、运费券都能加。</p></div>
-          </li>
-          <li>
-            <span class="how-num">03</span>
-            <div><strong>看结论</strong><p>自动比较到手价，并给出用券顺序和凑单提示。</p></div>
-          </li>
-        </ol>
-        <p class="how-note">优惠能否叠加会随平台规则变化。省算给你的是“按你填写的规则计算”的结果，下单前请以结算页为准。</p>
       </section>
-
-      <footer class="foot">
-        <span>省算 · 不登录，不上传，数据只在这台设备</span>
-        <button type="button" class="text-btn" data-action="open-settings">数据与说明</button>
-      </footer>
     </main>
 
-    <div class="sticky-bar" id="sticky-bar">
-      <div class="sticky-copy">
-        <span id="sticky-label">当前最优</span>
-        <strong id="sticky-price">—</strong>
-      </div>
-      <button class="btn btn-primary btn-sm" type="button" data-action="scroll-hero">看结论</button>
-    </div>
+    <footer class="foot">
+      <span>省算 · 不登录，不保存搜索记录到服务器</span>
+      <button type="button" class="text-btn" data-action="open-about">数据与说明</button>
+    </footer>
   </div>
 
   <div id="sheet-root"></div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
   <noscript>
-    <div class="noscript">省算需要 JavaScript 才能计算优惠，请在浏览器设置中开启。</div>
+    <div class="noscript">省算需要 JavaScript 才能搜索和比价，请在浏览器设置中开启。</div>
   </noscript>
 
-  <script src="engine.js"></script>
-  <script src="app.js"></script>
+  <script src="search-engine.js"></script>
+  <script src="search.js"></script>
 </body>
 </html>

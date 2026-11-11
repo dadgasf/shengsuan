@@ -1,11 +1,12 @@
 /* 省算 PWA service worker：离线可用，导航请求优先取新版本 */
-const CACHE_NAME = 'suansuan-shell-v1.0.3';
+const CACHE_NAME = 'suansuan-shell-v2.0.1';
 const ASSETS = [
   './',
   './index.html',
   './styles.css',
-  './engine.js',
-  './app.js',
+  './search.css',
+  './search-engine.js',
+  './search.js',
   './manifest.webmanifest',
   './icon.svg',
   './icon-180.png',
