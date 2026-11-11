@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="省算图标">
+  <rect width="512" height="512" rx="116" fill="#0b3b2a"/>
+  <circle cx="408" cy="98" r="118" fill="#d9f58b" opacity=".14"/>
+  <circle cx="86" cy="430" r="120" fill="#179b67" opacity=".24"/>
+  <rect x="86" y="86" width="340" height="340" rx="92" fill="#d9f58b"/>
+  <text x="256" y="344" text-anchor="middle" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="236" font-weight="900" fill="#0b3b2a">省</text>
+  <circle cx="394" cy="394" r="44" fill="#0b3b2a"/>
+  <path d="M394 370v44m-17-17 17 17 17-17" fill="none" stroke="#d9f58b" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

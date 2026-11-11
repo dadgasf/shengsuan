@@ -1,0 +1,58 @@
+{
+  "name": "省算 · 淘宝美团到手价比价",
+  "short_name": "省算",
+  "description": "淘宝/天猫与美团双平台到手价比价，自动计算满减、店铺券、折扣、红包和运费券的最优叠加顺序。纯本地计算，不上传数据。",
+  "id": "./",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "background_color": "#f3efe5",
+  "theme_color": "#0b3b2a",
+  "categories": ["shopping", "utilities", "finance"],
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "粘贴商品口令",
+      "short_name": "粘贴比价",
+      "description": "从淘宝或美团复制口令，快速填入购物车",
+      "url": "./index.html?paste=1",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
